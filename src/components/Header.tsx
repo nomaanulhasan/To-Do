@@ -1,18 +1,19 @@
+import { MouseEvent, useState } from 'react';
 import {
   Typography,
   IconButton,
+  Container,
+  MenuItem,
   Toolbar,
   AppBar,
   Button,
   Menu,
-  MenuItem,
+  Link,
   Box,
-  Container
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import TaskIcon from '@mui/icons-material/Task';
 import { HeaderProps } from '../lib';
-import { useState } from 'react';
 
 const apps = [
   { id: 1, label: 'Clock', url: 'https://clock.nomaanulhasan.com' },
@@ -25,7 +26,7 @@ const apps = [
 export default function Header({ showMenu = false }: HeaderProps) {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+  const handleOpenNavMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleCloseNavMenu = () => {
@@ -73,14 +74,16 @@ export default function Header({ showMenu = false }: HeaderProps) {
               }}
             >
               {apps.map(({ id, label, url }) => (
-                <MenuItem
-                  onClick={handleCloseNavMenu}
+                <Link
                   target='_blank'
                   href={url}
-                  key={id}
+                  color='inherit'
+                  underline='hover'
                 >
-                  <Typography textAlign='center'>{label}</Typography>
-                </MenuItem>
+                  <MenuItem onClick={handleCloseNavMenu} key={id}>
+                    <Typography textAlign='center'>{label}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
