@@ -52,3 +52,7 @@ Contributions to the project are welcome. If you find any issues or have suggest
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+The To-Do List application is inspired by youtube tutorials by [WebDevSimplified](https://www.youtube.com/@WebDevSimplified). I am very thankful to WebDevSimplified for making such informative and easy to learn videos.
