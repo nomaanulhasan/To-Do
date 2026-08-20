@@ -18,16 +18,16 @@ export default function Footer({ showCopyright = false }: FooterProps) {
     >
       <Typography variant='body2' color='text.secondary' align='center'>
         {showCopyright
-          ? `Copyright © ${new Date().getFullYear()} -`
+          ? `Copyright &copy; ${new Date().getFullYear()} -`
           : 'Powered By:'}
         &nbsp;
         <Link
-          href='https://nomaanulhasan.com'
+          href='https://nomaanulhasan.comvercel.app'
           underline='hover'
           color='inherit'
           target='_blank'
         >
-          NomaanulHasan.com
+          NomanulHasan
         </Link>
       </Typography>
     </Box>
