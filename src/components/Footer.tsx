@@ -22,7 +22,7 @@ export default function Footer({ showCopyright = false }: FooterProps) {
           : 'Powered By:'}
         &nbsp;
         <Link
-          href='https://nomaanulhasan.comvercel.app'
+          href='https://nomaanulhasan.vercel.app'
           underline='hover'
           color='inherit'
           target='_blank'
