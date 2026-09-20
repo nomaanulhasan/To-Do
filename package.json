@@ -39,9 +39,9 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "eslint-plugin-storybook": "^9.0.4",
-    "storybook": "^8.6.14",
+    "storybook": "^10.6.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.70.0",
-    "vite": "^6.3.5"
+    "vite": "^8.3.0"
   }
 }
