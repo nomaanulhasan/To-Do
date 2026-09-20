@@ -1,14 +1,13 @@
 import { Dispatch, FormEvent, SetStateAction, useState } from 'react';
 import {
-  InputAdornment,
-  IconButton,
-  TextField,
+  Button,
   Container,
   FormGroup,
-  Hidden
+  IconButton,
+  InputAdornment,
+  TextField
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import Button from '@mui/material/Button';
 import { TodoItemProps } from '../lib';
 
 interface TodoFormProps {
@@ -17,7 +16,6 @@ interface TodoFormProps {
 
 export default function TodoForm({ addTodoCallback }: TodoFormProps) {
   const [todoItemText, setTodoItemText] = useState('');
-  const emptyTodoItem = { id: crypto.randomUUID(), completed: false };
 
   const handleAddNewTodo = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,11 +23,24 @@ export default function TodoForm({ addTodoCallback }: TodoFormProps) {
 
     addTodoCallback(currentTodoList => [
       ...currentTodoList,
-      { ...emptyTodoItem, title: todoItemText }
+      { id: crypto.randomUUID(), completed: false, title: todoItemText }
     ]);
 
     setTodoItemText('');
   };
+
+  const mobileSubmitButton = (
+    <InputAdornment position='end'>
+      <IconButton
+        sx={{ display: { xs: 'inline-flex', md: 'none' } }}
+        color='primary'
+        type='submit'
+        size='small'
+      >
+        <AddIcon />
+      </IconButton>
+    </InputAdornment>
+  );
 
   return (
     <Container sx={{ mt: 10, py: 1 }}>
@@ -45,28 +56,17 @@ export default function TodoForm({ addTodoCallback }: TodoFormProps) {
             value={todoItemText}
             label='Enter Todo Title'
             variant='outlined'
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position='end'>
-                  <Hidden mdUp>
-                  <IconButton color='primary' type='submit' size='small'>
-                    <AddIcon />
-                  </IconButton>
-                  </Hidden>
-                </InputAdornment>
-              )
-            }}
+            slotProps={{ input: { endAdornment: mobileSubmitButton } }}
           />
-          <Hidden mdDown>
-            <Button
-              startIcon={<AddIcon />}
-              variant='contained'
-              type='submit'
-              size='large'
-            >
-              Add New
-            </Button>
-          </Hidden>
+          <Button
+            sx={{ display: { xs: 'none', md: 'inline-flex' } }}
+            startIcon={<AddIcon />}
+            variant='contained'
+            type='submit'
+            size='large'
+          >
+            Add New
+          </Button>
         </FormGroup>
       </form>
     </Container>

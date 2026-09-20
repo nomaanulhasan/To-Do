@@ -46,7 +46,7 @@ export default function App() {
       <Header />
       <TodoForm addTodoCallback={setTodoList} />
       <Divider sx={{ my: 2 }} />
-      <TodoList {...{ todoList, toggleTodo, deleteTodo }} />
+      <TodoList todoList={todoList} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
       <Footer />
     </Container>
   );

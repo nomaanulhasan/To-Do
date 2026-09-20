@@ -16,11 +16,11 @@ import TaskIcon from '@mui/icons-material/Task';
 import { HeaderProps } from '../lib';
 
 const apps = [
-  { id: 1, label: 'Clock', url: 'https://clock.nomaanulhasan.com' },
-  { id: 2, label: 'Calculator', url: 'https://calculator.nomaanulhasan.com' },
-  { id: 3, label: 'Weather', url: 'https://weather.nomaanulhasan.com' },
-  { id: 4, label: 'Quiz', url: 'https://quiz.nomaanulhasan.com' },
-  { id: 5, label: 'More', url: 'https://nomaanulhasan.com' }
+  { id: 1, label: 'Clock', url: 'https://clock-nomaanulhasan.vercel.app' },
+  { id: 2, label: 'Calculator', url: 'https://calculator-nomaanulhasan.vercel.app' },
+  { id: 3, label: 'Weather', url: 'https://weather-nomaanulhasan.vercel.app' },
+  { id: 4, label: 'Quiz', url: 'https://quiz-nomaanulhasan.vercel.app' },
+  { id: 5, label: 'More', url: 'https://nomaanulhasan.vercel.app' }
 ];
 
 export default function Header({ showMenu = false }: HeaderProps) {
@@ -37,7 +37,7 @@ export default function Header({ showMenu = false }: HeaderProps) {
     <AppBar position='fixed'>
       <Container maxWidth='sm'>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Box display='flex' alignItems='center' mr={2}>
+          <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
             <TaskIcon sx={{ mr: 1 }} />
             <Typography variant='h6' component='div'>
               To-Do List
@@ -75,13 +75,14 @@ export default function Header({ showMenu = false }: HeaderProps) {
             >
               {apps.map(({ id, label, url }) => (
                 <Link
+                  key={id}
                   target='_blank'
                   href={url}
                   color='inherit'
                   underline='hover'
                 >
-                  <MenuItem onClick={handleCloseNavMenu} key={id}>
-                    <Typography textAlign='center'>{label}</Typography>
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography sx={{ textAlign: 'center' }}>{label}</Typography>
                   </MenuItem>
                 </Link>
               ))}
